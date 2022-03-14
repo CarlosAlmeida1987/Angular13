@@ -1,0 +1,30 @@
+.container {
+    margin-top: 30px;
+}
+
+.add-car {
+    margin-bottom: 30px;
+}
+
+.list-car {
+    margin-bottom: 50px;
+}
+
+.btn-add-car {
+    margin-right: 10px;
+}
+
+.btn-add-car {
+    margin-right: 10px;
+}
+
+.btn {
+    border: none;
+    padding: 5px 2px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    width: 100%;
+    
+}

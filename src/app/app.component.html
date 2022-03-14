@@ -1,0 +1,60 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item active" aria-current="page">Gerenciamento de updates</li>
+  </ol>
+</nav>
+<div class="container">
+  <div class="card list-car">
+    <h5 class="card-header">Lista de Updates</h5>
+    <div class="card-body">
+      <nav >
+        <input  class="form-control" type="text" [(ngModel)]="filter" />
+        <!-- Input que deve ser adicionado -->
+      </nav>
+      <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Id</th>
+              <th scope="col">Data de lançamento atual</th>
+              <th scope="col">Data de lançamento inicial</th>
+              <th scope="col">Título do documento</th>
+              <th scope="col">Url</th>
+              <th scope="col">Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let updates of updatess | filter:filter">
+              <td>{{updates.id}}</td>
+              <td>{{updates.initialReleaseDate}}</td>  
+              <td>{{updates.currentReleaseDate}}</td>
+              <td>{{updates.documentTitle}}</td>
+              <td>{{updates.cvrfUrl}}</td>
+              <td>
+                <button type="button" class="btn btn-success btn-sm" (click)="listaUpdates(updates)">Seleciona</button>
+                <button type="button" class="btn btn-danger btn-sm" (click)="deleteUpdates(updates)">Deletar</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+  </div>
+
+  <div class="card add-car">
+    <h5 class="card-header">Buscar/Atualizações de Updates</h5>
+    <div class="card-body">
+        <form id="add-form" (ngSubmit)="f.form.valid && getUpdatess()" #f="ngForm" novalidate>
+          <div class="form-group">
+              <label for="model">Alias</label>
+              <input type="text" [(ngModel)]="updates.alias" id="model" name="model" #model="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && model.invalid }" placeholder="Digite o Alias">
+              <div  class="invalid-feedback">
+                  <div >Alias é obrigatório</div>
+              </div>
+          </div>
+          
+          <button type="submit" class="btn btn-primary btn-add-car">Atualizações</button>
+          <button type="reset" class="btn btn-secondary btn-add-car" (click)="cleanForm(f)">Cancelar</button>
+        </form>
+    </div>
+  </div>
+</div>
+
